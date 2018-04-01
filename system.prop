@@ -35,6 +35,7 @@ vendor.fm.a2dp.conc.disabled=true
 vendor.audio.noisy.broadcast.delay=600
 audio.offload.pstimeout.secs=3
 persist.vendor.audio.headset.anc.type=feedback
+ro.config.media_vol_steps=25
 
 # Bluetooth
 ro.bt.bdaddr_path=/sys/module/htc_bdaddress/parameters/bdaddress
@@ -95,6 +96,9 @@ persist.ims.disableADBLogs=1
 persist.ims.disableQXDMLogs=1
 persist.ims.disableIMSLogs=1
 
+# LineageOTA
+lineage.updater.uri=http://lineageota.ddns.net/api
+
 # Media
 media.stagefright.enable-player=true
 media.stagefright.enable-http=true
@@ -111,6 +115,7 @@ persist.media.treble_omx=false
 # Perf
 ro.vendor.extension_library=libqti-perfd-client.so
 ro.sys.fw.bg_apps_limit=60
+ro.vendor.qti.config.zram=true
 
 #property for vendor specific library
 ro.vendor.at_library=libqti-at.so
@@ -177,6 +182,9 @@ ro.telephony.call_ring.multiple=false
 persist.timed.enable=true
 persist.delta_time.enable=true
 persist.backup.ntpServer="0.pool.ntp.org"
+
+# Voice assistant
+ro.opa.eligible_device=true
 
 #VoLTE
 persist.volte_enabled_by_hw=1

@@ -391,11 +391,11 @@ on boot
     chown system system /sys/devices/virtual/htc_sensorhub/sensor_hub/hall_sensor
     chown system system /sys/devices/virtual/htc_sensorhub/sensor_hub/sensor_hub_rdata
     chown system system /sys/devices/virtual/htc_sensorhub/sensor_hub/facedown_enabled
-    chown system gesture_motion /sys/class/htc_sensorhub/sensor_hub/gesture_motion
+    chown system system /sys/class/htc_sensorhub/sensor_hub/gesture_motion
     chown system system /sys/class/htc_sensorhub/sensor_hub/mcu_wakeup
     chown system system /sys/class/htc_sensorhub/sensor_hub/dbg_flag
-    chown system gesture_motion /sys/class/htc_sensorhub/sensor_hub/edge_thd
-    chown system gesture_motion /sys/android_edge/hw_version
+    chown system system /sys/class/htc_sensorhub/sensor_hub/edge_thd
+    chown system system /sys/android_edge/hw_version
     chown system system /sys/android_edge/gadc
     chown system system /sys/class/htc_sensorhub/sensor_hub/vbus_time
     chown system system /sys/devices/virtual/htc_sensorhub/sensor_hub/vibrate_ms
@@ -904,7 +904,7 @@ service start_hci_filter /system/vendor/bin/wcnss_filter
     class late_start
     user bluetooth
     group bluetooth diag system wakelock
-    seclabel u:r:bluetooth:s0
+    seclabel u:r:wcnss_filter:s0
     disabled
 
 on property:wc_transport.start_root=true
@@ -1022,7 +1022,7 @@ service wpa_supplicant /vendor/bin/hw/wpa_supplicant \
     -I/vendor/etc/wifi/p2p_supplicant_overlay.conf -N \
     -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
     -I/vendor/etc/wifi/wpa_supplicant_overlay.conf \
-    -O/data/misc/wifi/sockets -puse_p2p_group_interface=1 -dd \
+    -O/data/misc/wifi/sockets -puse_p2p_group_interface=1 \
     -e/data/misc/wifi/entropy.bin -g@android:wpa_wlan0
 #   we will start as root and wpa_supplicant will switch to user wifi
 #   after setting up the capabilities required for WEXT

@@ -78,7 +78,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/permissions/com.htc.sensor.edgesense.xml:/system/etc/permissions/com.htc.sensor.edgesense.xml \
     $(LOCAL_PATH)/configs/permissions/com.htc.sensor.hallsensor.xml:/system/etc/permissions/com.htc.sensor.hallsensor.xml \
     $(LOCAL_PATH)/configs/permissions/com.htc.sensor.sensorhub.xml:/system/etc/permissions/com.htc.sensor.sensorhub.xml \
-    $(LOCAL_PATH)/configs/permissions/com.htc.software.market.xml:/system/etc/permissions/com.htc.software.market.xml
+    $(LOCAL_PATH)/configs/permissions/com.htc.software.market.xml:/system/etc/permissions/com.htc.software.market.xml \
+    $(LOCAL_PATH)/configs/permissions/privapp-permissions-ocn.xml:/system/etc/permissions/privapp-permissions-ocn.xml
 
 
 # ANT+
@@ -143,9 +144,9 @@ PRODUCT_PACKAGES += \
     com.quicinc.cne \
     services-ext
 
-# Gesture Handler
-#PRODUCT_PACKAGES += \
-#GestureHandler
+# Gestures
+PRODUCT_PACKAGES += \
+GestureHandler
 
 # Display
 PRODUCT_PACKAGES += \
@@ -255,7 +256,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keylayout/AK8789_HALL_SENSOR.kl:system/usr/keylayout/AK8789_HALL_SENSOR.kl \
     $(LOCAL_PATH)/keylayout/uinput-fpc.kl:system/usr/keylayout/uinput-fpc.kl \
     $(LOCAL_PATH)/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
-    $(LOCAL_PATH)/keylayout/himax-touchscreen-cap.kl:system/usr/keylayout/himax-touchscreen-cap.kl
+    $(LOCAL_PATH)/keylayout/himax-cap.kl:system/usr/keylayout/himax-cap.kl
 
 # IRQ
 PRODUCT_COPY_FILES += \

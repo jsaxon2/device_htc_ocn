@@ -19,7 +19,7 @@ BOARD_VENDOR := htc
 DEVICE_PATH := device/htc/ocn
 
 # Asserts
-TARGET_OTA_ASSERT_DEVICE := htc_ocn,htc_ocnuhl,htc_ocnwhl,htc_ocndugl
+TARGET_OTA_ASSERT_DEVICE := htc_ocn,htc_ocnuhl,htc_ocnwhl,htc_ocndugl,htc_ocndtwl,ocn
 
 # Architecture
 TARGET_ARCH := arm64
@@ -47,7 +47,6 @@ TARGET_NO_BOOTLOADER := true
 # Kernel
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_CMDLINE := console=ttyMSM0,115200,n8 androidboot.console=ttyMSM0 user_debug=31 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 sched_enable_hmp=1 sched_enable_power_aware=1 service_locator.enable=1 swiotlb=2048 androidboot.configfs=true androidboot.usbcontroller=a800000.dwc3 androidboot.hardware=qcom androidkey.dummy=1 androidboot.fpsensor=fpc1145
-BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_KERNEL_IMAGE_NAME := Image.lz4-dtb
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_TAGS_OFFSET := 0x00000100
@@ -57,7 +56,7 @@ TARGET_COMPILE_WITH_MSM_KERNEL := true
 TARGET_KERNEL_SOURCE := kernel/htc/msm8998
 TARGET_KERNEL_CONFIG := lineage_ocean_defconfig
 
-BOARD_ROOT_EXTRA_FOLDERS := bt_firmware firmware persist firmware/image
+BOARD_ROOT_EXTRA_FOLDERS := bt_firmware firmware persist firmware/image dsp
 
 # ANT+
 BOARD_ANT_WIRELESS_DEVICE := "qualcomm-uart"
@@ -160,7 +159,8 @@ VSYNC_EVENT_PHASE_OFFSET_NS := 2000000
 SF_VSYNC_EVENT_PHASE_OFFSET_NS := 6000000
 
 # Dexpreopt
-WITH_DEXPREOPT := false
+WITH_DEXPREOPT := true
+WITH_DEXPREOPT_BOOT_IMG_AND_SYSTEM_SERVER_ONLY ?= true
 
 # Encryption
 TARGET_HW_DISK_ENCRYPTION := true
@@ -174,7 +174,7 @@ BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_CACHEIMAGE_PARTITION_SIZE := 234881024
 BOARD_BOOTIMAGE_PARTITION_SIZE := 67108864
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 67108864
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 4009754624
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 3724541952
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 58737033216
 TARGET_FS_CONFIG_GEN += $(DEVICE_PATH)/configs/config.fs
 TARGET_EXFAT_DRIVER := exfat
@@ -204,6 +204,9 @@ TARGET_PROVIDES_KEYMASTER := true
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
 
+# Lineage Hardware
+BOARD_HARDWARE_CLASS += $(DEVICE_PATH)/lineagehw
+
 # Media
 TARGET_USES_MEDIA_EXTENSIONS := true
 
@@ -232,7 +235,6 @@ BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
 # Sensors
 USE_SENSOR_MULTI_HAL := true
 
-# Wifi
 # Wifi
 BOARD_HAS_QCOM_WLAN := true
 BOARD_HAS_QCOM_WLAN_SDK := true
